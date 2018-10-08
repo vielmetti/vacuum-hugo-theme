@@ -1,0 +1,10 @@
+  <ul class="posts">
+  {{ range .Data.Pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ if isset .Params "categories" }}
+    &middot;
+    {{ range .Params.categories }}<a class="label" href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+    {{ end }}</span>
+    &middot; <time>{{ .Date.Format "2 January 2006" }}</time></li>
+  {{ end }}
+  </ul>

@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html>
+<body>
+<title>Vacuum</title>
+
+<!--header-->
+<h2>Vacuum weblog E. Vielmetti</h2>
+<!--categories-->
+{{ partial "categories.html" . }}
+
+
+<!--tagline-->
+<h5>nature abhors a vacuum</h5>
+
+<!--table layout-->
+<table>
+<tr>
+	
+<!--left spacer-->
+<td width="5%"></td>
+
+<!--left sidebar-->
+<td width="30%" valign="top">
+{{ partial "sidebar.html" . }}
+{{ template "_internal/pagination.html" . }}
+</td>
+
+<!--middle spacer-->
+<td width="5%" valign="top"></td>
+
+<!--body content-->
+<td width="55%" valign="top" halign="right">
+
+{{ range .Paginator.Pages }}
+  <h3>{{ .Date.Format "2 January 2006" }}</h3>
+      <h3>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h3>
+      {{ .Content }}
+{{ end }}
+
+<!--
+{{ range .Data.Pages.GroupByDate "2 January 2006"  }}
+<h2>{{ .Key }}</h2>
+ {{ range .Pages }}
+  <h3>{{ .Date.Format "2 January 2006" }}</h3>
+      <h3>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h3>
+      {{ .Content }}
+  {{ end }}
+{{ end }}
+-->
+
+<!--
+{{ range first 10 .Data.Pages }}
+  <h3>{{ .Date.Format "2 January 2006" }}</h3>
+  <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+  {{ .Content }}
+{{ end }}
+-->
+
+<!--right spacer-->
+<td width="5%" valign="top"></td>
+</td>
+</tr>
+</table>
+
+<!--footer content-->
+{{ partial "footer.html" . }}
+</body>
+</html> 

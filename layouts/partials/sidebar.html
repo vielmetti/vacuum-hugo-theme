@@ -1,0 +1,49 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>{{ .Site.Title }}</h1>
+      <p class="lead">
+      {{ with .Site.Params.description }} {{.}} {{ else }}An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.{{end}}
+      </p>
+    </div>
+
+    <h3><a href="/">Home</a> </h3>
+    <ul class="sidebar-nav">
+      {{ range .Site.Menus.main }}
+        <li><a href="{{.URL}}"> {{ .Name }} </a></li>
+      {{end}}
+    </ul>
+
+    <h3 class="panel-title">Recent Posts</h3> 
+    <ul class="sidebar-recent">
+	{{ range first 20 .Site.Pages}} 
+	<li><a href="{{.RelPermalink}}" class="list-group-item">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+
+    <div class="sidebar-calendar">
+	{{ range .Data.Pages }}
+	   {{ if (eq .Type "calendar") }}
+	       {{ .Content }}
+	   {{ end }}
+	{{ end }}
+    </div>
+
+    <div class="sidebar-todo">
+	{{ range .Data.Pages }}
+	   {{ if (eq .Type "todo") }}
+	       {{ .Content }}
+	   {{ end }}
+	{{ end }}
+    </div>
+
+    <div class="sidebar-blogroll">
+	{{ range .Data.Pages }}
+	   {{ if (eq .Type "blogroll") }}
+	       {{ .Content }}
+	   {{ end }}
+	{{ end }}
+    </div>
+
+  </div>
+</div>
